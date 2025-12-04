@@ -8,11 +8,16 @@ import ChatMessages from '@/components/Chat/ChatMessages'
 import DriverCards from '@/components/DriverCards/DriverCards'
 import Image from 'next/image'
 
+type Message = {
+  role: 'user' | 'assistant'
+  content: string
+}
+
 export default function Home() {
-  const [messages, setMessages] = useState([
+  const [messages, setMessages] = useState<Message[]>([
     { role: 'assistant', content: "Welcome to BluebirdX! I'm Princess Leia, your luxury concierge. I'd be delighted to help you arrange your journey. ✨" }
   ])
-  const [drivers, setDrivers] = useState([])
+  const [drivers, setDrivers] = useState<any[]>([])
   const [orbState, setOrbState] = useState<'idle' | 'listening' | 'thinking' | 'revealing'>('idle')
   const [threadId, setThreadId] = useState<string | null>(null)
 
