@@ -1,14 +1,15 @@
 import OpenAI from 'openai'
 import { NextRequest, NextResponse } from 'next/server'
 
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY
-})
-
-const LEIA_ASSISTANT_ID = process.env.LEIA_ASSISTANT_ID!
-
 export async function POST(req: NextRequest) {
   try {
+    // Initialize OpenAI client here (at runtime) instead of at module level
+    const openai = new OpenAI({
+      apiKey: process.env.OPENAI_API_KEY
+    })
+
+    const LEIA_ASSISTANT_ID = process.env.LEIA_ASSISTANT_ID!
+
     const { message, threadId } = await req.json()
 
     // Create or reuse thread
