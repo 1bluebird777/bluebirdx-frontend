@@ -1,0 +1,89 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --midnight-blue: #0F172A;
+  --deep-navy: #1E293B;
+  --electric-blue: #3B82F6;
+  --golden-glow: #F59E0B;
+  --soft-white: #F8FAFC;
+}
+
+body {
+  background: linear-gradient(135deg, var(--midnight-blue) 0%, var(--deep-navy) 100%);
+  color: var(--soft-white);
+  font-family: var(--font-inter);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-playfair);
+}
+
+/* Magical Textbox */
+.magical-textbox-input {
+  width: 100%;
+  height: 70px;
+  padding: 0 80px;
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.8), rgba(30, 58, 138, 0.6));
+  backdrop-filter: blur(20px);
+  border: 2px solid rgba(245, 158, 11, 0.3);
+  border-radius: 40px;
+  color: white;
+  font-size: 16px;
+  outline: none;
+  transition: all 0.3s ease;
+  box-shadow: 
+    0 8px 32px rgba(59, 130, 246, 0.3),
+    0 0 60px rgba(245, 158, 11, 0.2),
+    inset 0 0 20px rgba(255, 255, 255, 0.1);
+}
+
+.magical-textbox-input:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 48px rgba(59, 130, 246, 0.5);
+}
+
+.magical-textbox-input:focus {
+  border-color: rgba(245, 158, 11, 0.8);
+  box-shadow: 
+    0 0 80px rgba(245, 158, 11, 0.6),
+    0 12px 48px rgba(59, 130, 246, 0.6);
+}
+
+.magical-textbox-input::placeholder {
+  color: rgba(248, 250, 252, 0.5);
+}
+
+/* Chat animations */
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.leia-message {
+  animation: slideInLeft 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.customer-message {
+  animation: slideInRight 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
